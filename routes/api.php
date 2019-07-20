@@ -22,6 +22,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('country','Country\CountryController@countrySave');
 // Route::put('country/{id}','Country\CountryController@countryUpdate');
 // Route::delete('country/{id}','Country\CountryController@countryDelete');
-Route::apiResource('country','Country\Country');
-Route::get('file/country_list','FileController@country_list');
-Route::post('file/country_list','FileController@country_save');
+// Route::get('file/country_list','FileController@country_list');
+// Route::post('file/country_list','FileController@country_save');
+Route::group(['middleware' => 'auth:api'], function () {
+    
+    Route::apiResource('country','Country\Country');
+});
